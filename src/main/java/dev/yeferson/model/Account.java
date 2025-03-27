@@ -37,5 +37,10 @@ public  class Account {
         balance += amount;
         numberOfDeposits++;
     }
+
+    public void withdraw(double amount) {
+        balance -= amount;
+        numberOfWithdrawals++;
+    }
     
 }
