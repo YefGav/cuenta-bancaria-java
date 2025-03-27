@@ -1,13 +1,13 @@
 package dev.yeferson.model;
 
-public  class Account {
+public class Account {
 
     protected double balance;
     protected int numberOfDeposits;
     protected int numberOfWithdrawals;
     protected double annualInterestRate;
     protected double monthlyCommission;
-    
+
     public Account(double balance, double annualInterestRate) {
         this.balance = balance;
         this.annualInterestRate = annualInterestRate;
@@ -59,5 +59,12 @@ public  class Account {
         this.balance -= this.monthlyCommission;
         this.balance += calculateMonthlyInterest();
     }
-    
+
+    public String print() {
+        return "Balance: " + this.balance +
+                ", Deposits: " + this.numberOfDeposits +
+                ", Withdrawals: " + this.numberOfWithdrawals +
+                ", Monthly Commission: " + this.monthlyCommission;
+    }
+
 }

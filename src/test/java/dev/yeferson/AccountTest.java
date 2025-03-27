@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.closeTo;
+import static org.hamcrest.Matchers.containsString;
 
 public class AccountTest {
 
@@ -74,6 +75,7 @@ public class AccountTest {
 
     @Test
     public void testPrint() {
+
         String output = account.print();
         assertThat(output, containsString("Balance"));
         assertThat(output, containsString("Deposits"));
