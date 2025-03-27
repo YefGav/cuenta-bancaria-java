@@ -72,4 +72,13 @@ public class AccountTest {
         assertThat(account.getBalance(), closeTo(4962.37, 0.010));
     }
 
+    @Test
+    public void testPrint() {
+        String output = account.print();
+        assertThat(output, containsString("Balance"));
+        assertThat(output, containsString("Deposits"));
+        assertThat(output, containsString("Withdrawals"));
+        assertThat(output, containsString("Monthly Commission"));
+    }
+
 }
