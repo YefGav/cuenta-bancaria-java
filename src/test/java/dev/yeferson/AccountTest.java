@@ -34,6 +34,13 @@ public class AccountTest {
         assertThat(account.getNumberOfDeposits(), equalTo(1));
     }
     
+    @Test
+
+     public void testWithdrawDecreasesBalance() {
+        account.withdraw(300.0);
+        assertThat(account.getBalance(), equalTo(4700.0));
+        assertThat(account.getNumberOfWithdrawals(), equalTo(1));
+    }
 
   
 
