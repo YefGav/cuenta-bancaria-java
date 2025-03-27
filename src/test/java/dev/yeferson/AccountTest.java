@@ -15,6 +15,7 @@ public class AccountTest {
     public void setUp() {
         account = new Account(5000.0, 3.0);
     }
+
     @Test
 
     public void testAccountConstructor() {
@@ -27,21 +28,31 @@ public class AccountTest {
     }
 
     @Test
-    
+
     public void testDepositIncreasesBalance() {
         account.deposit(500.0);
         assertThat(account.getBalance(), equalTo(5500.0));
         assertThat(account.getNumberOfDeposits(), equalTo(1));
     }
-    
+
     @Test
 
-     public void testWithdrawDecreasesBalance() {
+    public void testWithdrawDecreasesBalance() {
         account.withdraw(300.0);
         assertThat(account.getBalance(), equalTo(4700.0));
         assertThat(account.getNumberOfWithdrawals(), equalTo(1));
     }
 
-  
+    @Test
+    public void testWithdrawException() {
+        try {
+            account.withdraw(15000.0);
+
+            throw new AssertionError("Expected exception not thrown");
+        } catch (IllegalArgumentException ex) {
+
+            assertThat(ex.getMessage(), equalTo("Insufficient funds"));
+        }
+    }
 
 }
