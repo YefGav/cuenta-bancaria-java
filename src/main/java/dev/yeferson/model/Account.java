@@ -39,8 +39,11 @@ public  class Account {
     }
 
     public void withdraw(double amount) {
-        balance -= amount;
-        numberOfWithdrawals++;
+        if (amount > this.balance) {
+            throw new IllegalArgumentException("Insufficient funds");
+        }
+        this.balance -= amount;
+        this.numberOfWithdrawals++;
     }
     
 }
