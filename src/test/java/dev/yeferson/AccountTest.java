@@ -26,6 +26,13 @@ public class AccountTest {
         assertThat(account.getMonthlyCommission(), equalTo(0.0));
     }
 
+    @Test
+    
+    public void testDepositIncreasesBalance() {
+        account.deposit(500.0);
+        assertThat(account.getBalance(), equalTo(5300.0));
+        assertThat(account.getNumberOfDeposits(), equalTo(1));
+    }
     
 
   
