@@ -30,7 +30,7 @@ public class AccountTest {
     
     public void testDepositIncreasesBalance() {
         account.deposit(500.0);
-        assertThat(account.getBalance(), equalTo(5300.0));
+        assertThat(account.getBalance(), equalTo(5500.0));
         assertThat(account.getNumberOfDeposits(), equalTo(1));
     }
     

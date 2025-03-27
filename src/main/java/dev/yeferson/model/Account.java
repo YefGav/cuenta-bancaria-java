@@ -33,5 +33,9 @@ public  class Account {
         return monthlyCommission;
     }
 
+    public void deposit(double amount) {
+        balance += amount;
+        numberOfDeposits++;
+    }
     
 }
