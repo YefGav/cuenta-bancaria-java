@@ -63,4 +63,13 @@ public class AccountTest {
         assertThat(interest, closeTo(12.5, 0.001));
     }
 
+    @Test
+    public void testMonthlyStatement() {
+
+        account.setMonthlyCommission(50.0);
+        account.monthlyStatement();
+
+        assertThat(account.getBalance(), closeTo(4962.37, 0.010));
+    }
+
 }

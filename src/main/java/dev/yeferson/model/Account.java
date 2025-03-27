@@ -33,6 +33,10 @@ public  class Account {
         return monthlyCommission;
     }
 
+    public void setMonthlyCommission(double monthlyCommission) {
+        this.monthlyCommission = monthlyCommission;
+    }
+
     public void deposit(double amount) {
         balance += amount;
         numberOfDeposits++;
@@ -49,6 +53,11 @@ public  class Account {
     public double calculateMonthlyInterest() {
         double monthlyRate = this.annualInterestRate / 12 / 100;
         return this.balance * monthlyRate;
+    }
+
+    public void monthlyStatement() {
+        this.balance -= this.monthlyCommission;
+        this.balance += calculateMonthlyInterest();
     }
     
 }
