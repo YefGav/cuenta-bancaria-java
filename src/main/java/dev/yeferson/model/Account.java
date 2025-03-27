@@ -45,5 +45,10 @@ public  class Account {
         this.balance -= amount;
         this.numberOfWithdrawals++;
     }
+
+    public double calculateMonthlyInterest() {
+        double monthlyRate = this.annualInterestRate / 12 / 100;
+        return this.balance * monthlyRate;
+    }
     
 }

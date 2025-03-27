@@ -60,7 +60,7 @@ public class AccountTest {
     public void testCalculateMonthlyInterest() {
         double interest = account.calculateMonthlyInterest();
         
-        assertThat(interest, closeTo(3.0, 0.0025));
+        assertThat(interest, closeTo(12.5, 0.001));
     }
 
 }
