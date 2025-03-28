@@ -28,4 +28,24 @@ public class SavingAccountTest {
         assertThat(account.isActive(), equalTo(true));
         assertThat(account.getNumberOfDeposits(), equalTo(1));
     }
+
+    public class SavingsAccountWithdrawActiveTest {
+        
+        private SavingAccount account;
+        
+        @BeforeEach
+        public void setUp() {
+
+            account = new SavingAccount(15000.0, 3.0);
+        }
+        
+        @Test
+        public void testWithdrawRemainsActive() {
+           
+            account.withdraw(5000.0);
+            assertThat(account.getBalance(), equalTo(10000.0));
+            assertThat(account.isActive(), equalTo(true));
+            assertThat(account.getNumberOfWithdrawals(), equalTo(1));
+        }
+    }
 }
