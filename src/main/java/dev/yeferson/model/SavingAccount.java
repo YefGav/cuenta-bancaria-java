@@ -20,4 +20,12 @@ public class SavingAccount extends Account {
             this.active = true;
         }
     }
+
+    @Override
+    public void withdraw(double amount) {
+        super.withdraw(amount);
+        if (this.balance < 10000.0) {
+            this.active = false;
+        }
+    }
 }

@@ -29,7 +29,7 @@ public class SavingAccountTest {
         assertThat(account.getNumberOfDeposits(), equalTo(1));
     }
 
-    public class SavingsAccountWithdrawActiveTest {
+    public class SavingsAccountWithdrawTest {
         
         private SavingAccount account;
         
