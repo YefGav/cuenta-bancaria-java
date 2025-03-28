@@ -1,4 +1,4 @@
-package dev.yeferson;
+package dev.yeferson.model;
 
 import dev.yeferson.model.Account;
 
