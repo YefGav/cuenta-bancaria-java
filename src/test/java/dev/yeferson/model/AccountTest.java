@@ -58,7 +58,7 @@ public class AccountTest {
     @Test
     public void testCalculateMonthlyInterest() {
         double interest = account.calculateMonthlyInterest();
-        
+
         assertThat(interest, closeTo(12.5, 0.001));
     }
 
@@ -79,6 +79,16 @@ public class AccountTest {
         assertThat(output, containsString("Deposits"));
         assertThat(output, containsString("Withdrawals"));
         assertThat(output, containsString("Monthly Commission"));
+    }
+
+    @Test
+    public void testPrintOutput() {
+        String output = account.print();
+
+        assertThat(output, containsString("Balance"));
+        assertThat(output, containsString("Monthly Commission"));
+        assertThat(output, containsString("Transactions"));
+        assertThat(output, containsString("Overdraft"));
     }
 
 }
