@@ -23,7 +23,18 @@ public class SavingAccount extends Account {
 
     @Override
     public void withdraw(double amount) {
-        super.withdraw(amount);
+
+        if (!active) {
+            throw new IllegalArgumentException("Account is inactive, cannot withdraw");
+        }
+
+        if (amount > this.balance) {
+            throw new IllegalArgumentException("Insufficient funds");
+        }
+
+        this.balance -= amount;
+        this.numberOfWithdrawals++;
+        
         if (this.balance < 10000.0) {
             this.active = false;
         }
