@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.containsString;
 
 public class SavingAccountTest {
 
@@ -30,7 +31,7 @@ public class SavingAccountTest {
     }
 
     @Nested
-    
+
     public class SavingsAccountWithdrawTest {
 
         private SavingAccount account;
@@ -62,16 +63,26 @@ public class SavingAccountTest {
         @Test
         public void testMonthlyStatementCommission() {
 
-            account.withdraw(1000.0);
-            account.withdraw(1000.0);
-            account.withdraw(1000.0);
-            account.withdraw(1000.0);
-            account.withdraw(1000.0);
+            account.withdraw(500.0);
+            account.withdraw(500.0);
+            account.withdraw(500.0);
+            account.withdraw(500.0);
+            account.withdraw(500.0);
 
             account.monthlyStatement();
 
             assertThat(account.getMonthlyCommission(), equalTo(1000.0));
             assertThat(account.isActive(), equalTo(true));
+        }
+
+        @Test
+        public void testPrintOutput() {
+            String output = account.print();
+            account.withdraw(500.0);
+
+            assertThat(output, containsString("Balance"));
+            assertThat(output, containsString("Monthly Commission"));
+            assertThat(output, containsString("Transactions"));
         }
     }
 }

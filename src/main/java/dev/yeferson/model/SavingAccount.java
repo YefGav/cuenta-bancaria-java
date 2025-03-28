@@ -34,9 +34,17 @@ public class SavingAccount extends Account {
 
         this.balance -= amount;
         this.numberOfWithdrawals++;
-        
+
         if (this.balance < 10000.0) {
             this.active = false;
         }
+    }
+
+    @Override
+    public void monthlyStatement() {
+        int extraWithdrawals = Math.max(0, this.numberOfWithdrawals - 4);
+        this.monthlyCommission = extraWithdrawals * 1000.0;
+        super.monthlyStatement();
+        active = this.balance >= 10000.0;
     }
 }
