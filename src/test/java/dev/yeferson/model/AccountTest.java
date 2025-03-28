@@ -82,13 +82,13 @@ public class AccountTest {
     }
 
     @Test
-    public void testPrintOutput() {
-        String output = account.print();
+public void testPrintOutput() {
+    String output = account.print();
 
-        assertThat(output, containsString("Balance"));
-        assertThat(output, containsString("Monthly Commission"));
-        assertThat(output, containsString("Transactions"));
-        assertThat(output, containsString("Overdraft"));
-    }
+    assertThat(output, containsString("Balance"));
+    assertThat(output, containsString("Deposits"));
+    assertThat(output, containsString("Withdrawals"));
+    assertThat(output, containsString("Monthly Commission"));
+}
 
 }

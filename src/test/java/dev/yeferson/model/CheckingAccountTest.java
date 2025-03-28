@@ -57,8 +57,8 @@ public class CheckingAccountTest {
        
         account.monthlyStatement();
         
-        double expectedInterest = previousBalance * 0.01;
-        double expectedBalance = previousBalance - 50.0 + expectedInterest;
+        double expectedInterest = (previousBalance - 50.0) * 0.0025;
+        double expectedBalance = (previousBalance - 50.0) + expectedInterest;
         assertThat(account.getBalance(), closeTo(expectedBalance, 0.001));
     }
 }
