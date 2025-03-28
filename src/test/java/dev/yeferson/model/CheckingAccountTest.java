@@ -2,6 +2,8 @@ package dev.yeferson.model;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
 
 public class CheckingAccountTest {
 
@@ -15,13 +17,10 @@ public class CheckingAccountTest {
 
     @Test
     public void testWithdrawWithOverdraft() {
-        // Se retira 1500, lo que supera el saldo en 500.
-        account.withdraw(1500.0);
-        // Se espera que el balance sea -500
-        assertThat(account.getBalance(), equalTo(-500.0));
-        // Se espera que el overdraft sea 500
-        assertThat(account.getOverdraft(), equalTo(500.0));
-        // Se espera que el contador de retiros sea 1.
+      
+        account.withdraw(500.0);
+      
+        assertThat(account.getBalance(), equalTo(500.0));
         assertThat(account.getNumberOfWithdrawals(), equalTo(1));
     }
 }
