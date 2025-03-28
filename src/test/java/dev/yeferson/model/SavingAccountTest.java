@@ -18,4 +18,14 @@ public class SavingAccountTest {
         public void testAccountIsInactive() {
             assertThat(account.isActive(), equalTo(false));
         }
+
+        
+    @Test
+    public void testDepositActivateAccount() {
+      
+        account.deposit(6000.0); 
+        assertThat(account.getBalance(), equalTo(11000.0));
+        assertThat(account.isActive(), equalTo(true));
+        assertThat(account.getNumberOfDeposits(), equalTo(1));
+    }
 }
