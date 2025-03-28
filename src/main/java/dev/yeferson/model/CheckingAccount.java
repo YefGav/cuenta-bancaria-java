@@ -52,4 +52,10 @@ public class CheckingAccount extends Account {
             super.deposit(amount);
         }
     }
+
+    @Override
+    public void monthlyStatement() {
+
+        super.monthlyStatement();
+    }
 }
