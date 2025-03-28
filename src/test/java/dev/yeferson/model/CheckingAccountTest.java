@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.closeTo;
 
 public class CheckingAccountTest {
 
@@ -43,5 +44,21 @@ public class CheckingAccountTest {
         assertThat(account.getOverdraft(), equalTo(200.0));
         assertThat(account.getBalance(), equalTo(-200.0));
         assertThat(account.getNumberOfDeposits(), equalTo(1));
+    }
+
+    @Test
+    public void testMonthlyStatement() {
+      
+        account.withdraw(500.0);  
+        account.deposit(200.0);     
+     
+        account.setMonthlyCommission(50.0);
+        double previousBalance = account.getBalance();
+       
+        account.monthlyStatement();
+        
+        double expectedInterest = previousBalance * 0.01;
+        double expectedBalance = previousBalance - 50.0 + expectedInterest;
+        assertThat(account.getBalance(), closeTo(expectedBalance, 0.001));
     }
 }
