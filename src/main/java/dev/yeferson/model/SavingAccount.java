@@ -47,4 +47,12 @@ public class SavingAccount extends Account {
         super.monthlyStatement();
         active = this.balance >= 10000.0;
     }
+
+    @Override
+    public String print() {
+        int transactions = this.numberOfDeposits + this.numberOfWithdrawals;
+        return "Balance: " + this.balance +
+                ", Monthly Commission: " + this.monthlyCommission +
+                ", Transactions: " + transactions;
+    }
 }
