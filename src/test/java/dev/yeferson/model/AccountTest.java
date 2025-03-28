@@ -1,7 +1,5 @@
 package dev.yeferson.model;
 
-import dev.yeferson.model.Account;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.hamcrest.Matchers.equalTo;
