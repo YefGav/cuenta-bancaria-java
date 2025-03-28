@@ -12,4 +12,12 @@ public class SavingAccount extends Account {
     public boolean isActive() {
         return active;
     }
+
+    @Override
+    public void deposit(double amount) {
+        super.deposit(amount);
+        if (this.balance >= 10000.0) {
+            this.active = true;
+        }
+    }
 }
