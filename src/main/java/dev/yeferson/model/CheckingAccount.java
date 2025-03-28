@@ -7,7 +7,7 @@ public class CheckingAccount extends Account {
     public CheckingAccount(double balance, double annualInterestRate) {
 
         super(balance, annualInterestRate);
-        
+
     }
 
     public CheckingAccount(double balance, double annualInterestRate, double overdraft) {
@@ -21,18 +21,35 @@ public class CheckingAccount extends Account {
 
     @Override
     public void withdraw(double amount) {
-        
+
         if (amount > this.balance) {
             double overdraftNeeded = amount - this.balance;
             this.overdraft += overdraftNeeded;
-            
+
             this.balance -= amount;
         } else {
-          
+
             this.balance -= amount;
         }
         this.numberOfWithdrawals++;
     }
 
-    
+    @Override
+    public void deposit(double amount) {
+
+        if (this.overdraft > 0) {
+            if (amount >= this.overdraft) {
+                amount -= this.overdraft;
+                this.overdraft = 0.0;
+                super.deposit(amount);
+            } else {
+                this.overdraft -= amount;
+
+                this.balance += amount;
+                this.numberOfDeposits++;
+            }
+        } else {
+            super.deposit(amount);
+        }
+    }
 }
