@@ -1,6 +1,7 @@
 package dev.yeferson.model;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
@@ -28,6 +29,8 @@ public class SavingAccountTest {
         assertThat(account.getNumberOfDeposits(), equalTo(1));
     }
 
+    @Nested
+    
     public class SavingsAccountWithdrawTest {
 
         private SavingAccount account;
@@ -55,6 +58,20 @@ public class SavingAccountTest {
             assertThat(account.isActive(), equalTo(false));
             assertThat(account.getNumberOfWithdrawals(), equalTo(1));
         }
-    }
 
+        @Test
+        public void testMonthlyStatementCommission() {
+
+            account.withdraw(1000.0);
+            account.withdraw(1000.0);
+            account.withdraw(1000.0);
+            account.withdraw(1000.0);
+            account.withdraw(1000.0);
+
+            account.monthlyStatement();
+
+            assertThat(account.getMonthlyCommission(), equalTo(1000.0));
+            assertThat(account.isActive(), equalTo(true));
+        }
+    }
 }
