@@ -16,11 +16,21 @@ public class CheckingAccountTest {
     }
 
     @Test
-    public void testWithdrawWithOverdraft() {
+    public void testWithdraw() {
       
         account.withdraw(500.0);
       
         assertThat(account.getBalance(), equalTo(500.0));
+        assertThat(account.getNumberOfWithdrawals(), equalTo(1));
+    }
+
+    @Test
+    public void testWithdrawWithOverdraft() {
+      
+        account.withdraw(1500.0);
+      
+        assertThat(account.getBalance(), equalTo(-500.0));
+        assertThat(account.getOverdraft(), equalTo(500.0));
         assertThat(account.getNumberOfWithdrawals(), equalTo(1));
     }
 }
